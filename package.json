@@ -22,7 +22,9 @@
     "check:scripts": "astro sync && tsc --noEmit -p tsconfig.scripts.json",
     "check:astro": "astro check",
     "check:visual": "tsx scripts/modernization-check.ts",
-    "check:size": "tsx scripts/measure-load.ts"
+    "check:size": "tsx scripts/measure-load.ts",
+    "assets:sync": "node scripts/sync-assets.mjs",
+    "assets:check": "node scripts/sync-assets.mjs --check --project astro"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.1",

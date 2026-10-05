@@ -20,6 +20,10 @@ Build your personal blog with static pages, Markdown / MDX, light and dark modes
 
 </div>
 
+<p align="center">
+  <img src="public/img/brand/solitude-banner.webp" width="960" height="540" alt="Solitude paper airplane over a layered paper landscape" />
+</p>
+
 ![Astro Solitude desktop homepage preview](docs/screenshots/home-desktop.png)
 
 ## Features

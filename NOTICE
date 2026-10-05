@@ -21,3 +21,7 @@ and video demo files retain the attribution in public/media/shortcodes/README.md
 Font Awesome Free is distributed under its upstream font/icon/code licenses;
 KaTeX and other npm dependencies retain their licenses in their packages.
 Third-party browser libraries loaded by URL retain their respective licenses.
+
+Shared theme asset destinations, current SHA-256 values, and new generated
+paper-cut artwork prompts are recorded in docs/shared-assets.json. This inventory
+is separate from the historical Hugo source snapshot in docs/source-manifest.json.

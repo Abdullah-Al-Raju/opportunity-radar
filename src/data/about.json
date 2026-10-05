@@ -152,8 +152,9 @@
         }
       },
       "photo": {
-        "image": "/img/demo/cover-getting-started-v2.webp",
-        "alt": "Solitude sample cover"
+        "image": "/img/brand/creative-space.webp",
+        "alt": "Paper-cut creative workspace with a notebook and paper airplane",
+        "badge": "/img/brand/paper-plane-badge.webp"
       }
     },
     {

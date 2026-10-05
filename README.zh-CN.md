@@ -20,6 +20,10 @@
 
 </div>
 
+<p align="center">
+  <img src="public/img/brand/solitude-banner.webp" width="960" height="540" alt="Solitude paper airplane over a layered paper landscape" />
+</p>
+
 ![Astro Solitude 桌面首页预览](docs/screenshots/home-desktop.png)
 
 ## 特性

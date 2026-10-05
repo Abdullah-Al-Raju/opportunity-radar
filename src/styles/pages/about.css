@@ -343,7 +343,7 @@
 
 #about-page .myphoto > .author-content-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .3s ease; }
 
-#about-page .myphoto > .myphoto-badge { z-index: 3; right: 18px; bottom: 18px; width: 50px; height: 50px; background: #191a1e; border: 1px solid var(--efu-border-strong); border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,.32); transition: border-color .3s ease; }
+#about-page .myphoto > .myphoto-badge { position: absolute; top: auto; left: auto; z-index: 3; right: 18px; bottom: 18px; width: 50px; height: 50px; object-fit: contain; background: #191a1e; border: 1px solid var(--efu-border-strong); border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,.32); transition: border-color .3s ease; }
 
 #about-page .myphoto:hover > .author-content-img,
 #about-page .myphoto:focus-within > .author-content-img { filter: saturate(1.08); transform: scale(1.04); }

@@ -58,3 +58,9 @@ For documentation-only changes, check the affected links and run `pnpm docs:chec
 Target `main` and complete the pull request template. Explain the problem, the resulting behavior, and how you verified it. Link the related issue, include screenshots for visible changes, and mention configuration changes or migration steps when applicable.
 
 Keep commits clear and reviewable, and respond to review feedback. Contributions are made under the project's existing [Apache-2.0 license](LICENSE).
+
+## Shared brand assets
+
+Astro is the source of the shared Astro, Hexo, and Hugo static assets. Follow
+[the asset synchronization guide](docs/shared-assets.md) when changing these files.
+Run `pnpm assets:check` to validate this checkout without the sibling repositories.
