@@ -8,7 +8,7 @@ No. It creates your source repository. Connect a hosting platform or deploy `dis
 
 ## Why are comments and music missing?
 
-They are disabled by default. Configure your own services, enable the relevant features, and add navigation entries; see [Integrations](integrations.md). Setting `comment: true` on a post alone does not enable a global provider.
+Comments and the music hall are disabled in the template. The capsule is enabled with a sample Qishui playlist and requires access to its music API and player resources. Configure your own services, enable the relevant features, and add navigation entries; see [Integrations](integrations.md). Setting `comment: true` on a post alone does not enable a global provider.
 
 ## Why are drafts visible locally but absent after deployment?
 

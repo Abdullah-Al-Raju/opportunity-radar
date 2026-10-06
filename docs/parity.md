@@ -55,7 +55,7 @@ The comparison records 16 routes in both themes at 390, 768, 1280 and 1440 pixel
 | Valine aggregation | `http://127.0.0.1:4335` | Recent comments, message wall, participant avatars, style restoration |
 | Online music | `http://127.0.0.1:4336` | Qishui player, cover colors, mobile table-of-contents overlay |
 
-Third-party services use mocked responses or local resources in tests. Fixture identifiers are not live accounts. Production defaults keep comments and online music disabled.
+Third-party services use mocked responses or local resources in tests. Fixture identifiers are not live accounts. The template keeps comments and the music hall disabled, while its capsule uses a sample Qishui playlist. The template test serves local player scripts and a mocked playlist, without contacting production services.
 
 ## Source attribution
 

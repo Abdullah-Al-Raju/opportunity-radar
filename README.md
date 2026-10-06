@@ -73,7 +73,7 @@ export default defineSolitudeConfig({
 
 For a site hosted under a subdirectory, also set `base`, for example `base: '/blog/'`. See [Configuration](docs/configuration.md) for all options.
 
-The template includes sample posts and pages with local search enabled. Comments, comment aggregation, and online music are disabled with empty service identifiers. Follow the [integration guide](docs/integrations.md) to connect your own services. Replace sample content, images, and site identity before publishing. Changing the interface locale does not translate posts or custom navigation.
+The template includes sample posts and pages with local search enabled. Comments, comment aggregation, and the music hall are disabled with empty service identifiers. The music capsule is enabled with a sample Qishui playlist; replace `theme.capsule.id` with your own playlist or set `theme.capsule.enable: false` to disable it. Follow the [integration guide](docs/integrations.md) to connect your own services. Replace sample content, images, and site identity before publishing. Changing the interface locale does not translate posts or custom navigation.
 
 ### 3. Start writing
 

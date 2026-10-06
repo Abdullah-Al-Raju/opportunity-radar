@@ -33,7 +33,8 @@ Configure the theme through `defineSolitudeConfig` in [src/site.config.ts](../sr
 | Local search | Enabled, loaded on demand | Enabled and preloaded |
 | PWA manifest | Disabled | Enabled; this does not provide offline caching |
 | Comments and aggregation | Disabled, empty service identifiers | Disabled |
-| Music hall and capsule | Disabled, empty playlist | Disabled |
+| Music hall | Disabled, empty playlist | Disabled |
+| Music capsule | Disabled, empty playlist | Enabled with a sample Qishui playlist |
 
 The [full reference](configuration-inventory.md) lists base defaults, not the merged template configuration. Inspect `src/site.config.ts` for the template's locale and all overrides.
 

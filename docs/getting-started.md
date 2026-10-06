@@ -75,7 +75,7 @@ Preview `/p/hello-world/`. Use `.md` for regular posts and `.mdx` for posts cont
 | Title, avatar, navigation, sidebar, footer | `src/site.config.ts` |
 | Additional styles | `src/styles/custom.css` |
 
-Keep the component showcase as a reference until you no longer need it. When removing a sample post, also update navigation, recommendations, and links from other posts. Comments and online music have no preset service identifiers; enable your own through [Integrations](integrations.md).
+Keep the component showcase as a reference until you no longer need it. When removing a sample post, also update navigation, recommendations, and links from other posts. Comments and the music hall have no preset service identifiers. The capsule uses a sample Qishui playlist; replace `theme.capsule.id` or set `theme.capsule.enable: false` to disable it. Configure your own services through [Integrations](integrations.md).
 
 ## 6. Publish
 

@@ -15,7 +15,7 @@ The theme includes the routes below. Navigation entries and route existence are 
 | `/message/` | `message` | Comment service; wall animation also needs `theme.envelope.enable` |
 | `/recentcomments/` | `recentcomment` | Comment service and `theme.recent_comments.enable` |
 
-Comments and online music are disabled by default, with their menu links omitted. Their page types and routes remain available for later use.
+Comments and the music hall are disabled in the template, with their menu links omitted. The music capsule is enabled independently with a sample Qishui playlist. Their page types and routes remain available for later use.
 
 ## Override a built-in page
 

@@ -2,7 +2,7 @@
 
 [Documentation](README.md) · [Configuration reference](configuration-inventory.md)
 
-The template enables local search without an account. Comments, comment aggregation, comment walls, music hall, and the music capsule are disabled. Merge the snippets below into the `theme` object in your site configuration and use your own service information. Browser configuration is public: only use identifiers intended for client-side use.
+The template enables local search without an account. Comments, comment aggregation, comment walls, and the music hall are disabled. The music capsule is enabled with a sample Qishui playlist; replace `theme.capsule.id` or set `theme.capsule.enable: false` to disable it. Merge the snippets below into the `theme` object in your site configuration and use your own service information. Browser configuration is public: only use identifiers intended for client-side use.
 
 ## Enable comments
 
