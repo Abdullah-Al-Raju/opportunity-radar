@@ -41,5 +41,5 @@ The information provided on Opportunity Radar is for informational and education
 ### 4. Questions & Feedback
 
 If you have questions concerning our affiliate partnerships or editorial review policies:
-- **Email:** `editorial@opportunityradar.pages.dev`
+- **Email:** `editorial@opportunity-radar-c60.pages.dev`
 - **Contact:** [Contact Page](/contact/)

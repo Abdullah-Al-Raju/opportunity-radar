@@ -7,7 +7,7 @@ comment: false
 
 **Last Updated:** October 9, 2026
 
-Welcome to **Opportunity Radar**. By accessing and using this website (`https://opportunityradar.pages.dev`), you agree to comply with and be bound by the following terms and conditions of use.
+Welcome to **Opportunity Radar**. By accessing and using this website (`https://opportunity-radar-c60.pages.dev`), you agree to comply with and be bound by the following terms and conditions of use.
 
 ---
 
@@ -49,5 +49,5 @@ We reserve the right to revise or update these Terms of Service at any time with
 ### 6. Contact Information
 
 For questions regarding these Terms of Service:
-- **Email:** `editorial@opportunityradar.pages.dev`
+- **Email:** `editorial@opportunity-radar-c60.pages.dev`
 - **Contact Page:** [Contact Opportunity Radar](/contact/)

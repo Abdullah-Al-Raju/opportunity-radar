@@ -11,9 +11,9 @@ We welcome inquiries, feedback, corrections, and partnership proposals.
 
 ### How to Reach Us
 
-- **General Inquiries & Feedback:** `editorial@opportunityradar.pages.dev`
-- **Partnerships & Sponsorships:** `partnerships@opportunityradar.pages.dev`
-- **Corrections & Deadline Updates:** `updates@opportunityradar.pages.dev`
+- **General Inquiries & Feedback:** `editorial@opportunity-radar-c60.pages.dev`
+- **Partnerships & Sponsorships:** `partnerships@opportunity-radar-c60.pages.dev`
+- **Corrections & Deadline Updates:** `updates@opportunity-radar-c60.pages.dev`
 
 ---
 

@@ -34,7 +34,7 @@ def load_env_file():
 
 load_env_file()
 
-SITE_URL = os.environ.get("SITE_URL", "https://opportunityradar.pages.dev").rstrip("/")
+SITE_URL = os.environ.get("SITE_URL", "https://opportunity-radar-c60.pages.dev").rstrip("/")
 INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "opportunityradarindexnowkey")
 GEMINI_KEYS = [
     k for k in [

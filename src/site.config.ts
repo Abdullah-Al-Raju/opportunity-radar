@@ -1,7 +1,7 @@
 import { defineSolitudeConfig } from './lib/config';
 
 export default defineSolitudeConfig({
-  site: 'https://opportunityradar.pages.dev',
+  site: 'https://opportunity-radar-c60.pages.dev',
   title: 'Opportunity Radar',
   description:
     'Real-time radar for fully funded international scholarships, global fellowships, grants, and high-value developer tools.',
@@ -45,7 +45,7 @@ export default defineSolitudeConfig({
         'Opportunity Radar': [
           {
             name: 'Opportunity Radar',
-            url: 'https://opportunityradar.pages.dev',
+            url: 'https://opportunity-radar-c60.pages.dev',
             icon: '/img/logo.png',
           },
         ],
@@ -84,7 +84,7 @@ export default defineSolitudeConfig({
         left: [
           {
             name: 'Opportunity Radar',
-            url: 'https://opportunityradar.pages.dev',
+            url: 'https://opportunity-radar-c60.pages.dev',
             icon: 'fas fa-globe',
           },
         ],

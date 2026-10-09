@@ -7,7 +7,7 @@ comment: false
 
 **Last Updated:** October 9, 2026
 
-Welcome to **Opportunity Radar** (accessible at `https://opportunityradar.pages.dev`). Your privacy is critically important to us. This Privacy Policy document outlines the types of information that is collected and recorded by Opportunity Radar and how we use it.
+Welcome to **Opportunity Radar** (accessible at `https://opportunity-radar-c60.pages.dev`). Your privacy is critically important to us. This Privacy Policy document outlines the types of information that is collected and recorded by Opportunity Radar and how we use it.
 
 ---
 
@@ -52,5 +52,5 @@ Our articles contain links to official university portals, government scholarshi
 ### 6. Contact Us
 
 If you have questions or require more information about our Privacy Policy, please contact our team:
-- **Email:** `editorial@opportunityradar.pages.dev`
+- **Email:** `editorial@opportunity-radar-c60.pages.dev`
 - **Contact Page:** [Contact Opportunity Radar](/contact/)
