@@ -1,140 +1,83 @@
 [
   {
-    "id": "daad-germany-2026",
-    "keyword": "DAAD Scholarship Germany 2026/2027 Fully Funded Guide",
-    "title": "DAAD Scholarship Germany 2026/2027: Complete Application Guide & Monthly Stipend",
-    "slug": "daad-scholarship-germany-2026-guide",
-    "category": "Scholarships",
-    "tags": [
-      "DAAD",
-      "Germany",
-      "Fully Funded",
-      "Masters",
-      "PhD"
-    ],
-    "target_affiliate": "wise",
-    "status": "published",
-    "published_date": "2026-10-09T12:37:52.758494+00:00"
-  },
-  {
-    "id": "erasmus-mundus-guide",
-    "keyword": "Erasmus Mundus Scholarship 2026 Application Roadmap No IELTS",
-    "title": "Erasmus Mundus Scholarship 2026: Step-by-Step Roadmap & Consortium Selection",
-    "slug": "erasmus-mundus-scholarship-2026-guide",
-    "category": "Scholarships",
-    "tags": [
-      "Erasmus Mundus",
-      "Europe",
-      "Fully Funded",
-      "Masters"
-    ],
-    "target_affiliate": "wise",
-    "status": "published",
-    "published_date": "2026-10-09T12:37:52.758969+00:00"
-  },
-  {
-    "id": "github-student-pack-guide",
-    "keyword": "GitHub Student Developer Pack Setup Guide Free $200k Tools",
-    "title": "GitHub Student Developer Pack 2026: How to Unlock $200k in Free Dev Tools & Cloud Credits",
-    "slug": "github-student-developer-pack-guide",
+    "id": "claude-code-cli-developer-guide",
+    "keyword": "Claude Code CLI Autonomous Coding Workflows 2026",
+    "title": "Claude Code CLI: Complete Setup, Terminal Workflows & Autonomous Coding Guide",
+    "slug": "claude-code-cli-developer-guide",
     "category": "Developer Tools",
+    "image_category": "coding",
     "tags": [
-      "GitHub",
-      "Student Pack",
-      "Free Credits",
-      "Developer"
+      "Claude",
+      "CLI",
+      "Developer Tools",
+      "Autonomous Coding",
+      "AI"
     ],
     "target_affiliate": "dev_tools",
     "status": "published",
-    "published_date": "2026-10-09T12:37:52.759310+00:00"
+    "published_date": "2026-10-09T13:48:24.372110+00:00"
   },
   {
-    "id": "chevening-uk-scholarship",
-    "keyword": "Chevening Scholarship UK 2026/2027 Essay Tips & Requirements",
-    "title": "Chevening UK Scholarship 2026/2027: Winning Essay Framework & Leadership Prompts",
-    "slug": "chevening-uk-scholarship-2026-guide",
-    "category": "Scholarships",
+    "id": "deepseek-v3-r1-ollama-local-guide",
+    "keyword": "Run DeepSeek V3 and R1 Locally with Ollama",
+    "title": "How to Run DeepSeek V3 & R1 Locally with Ollama: Full Mac, Linux & Windows Guide",
+    "slug": "deepseek-v3-r1-ollama-local-guide",
+    "category": "AI Tools",
+    "image_category": "ai_models",
     "tags": [
-      "Chevening",
-      "UK",
-      "Fully Funded",
-      "Leadership"
+      "DeepSeek",
+      "Ollama",
+      "Local AI",
+      "Open Source",
+      "LLM"
     ],
-    "target_affiliate": "grammarly",
+    "target_affiliate": "cloud_gpu",
     "status": "published",
-    "published_date": "2026-10-09T12:37:52.759589+00:00"
+    "published_date": "2026-10-09T13:50:39.169798+00:00"
   },
   {
-    "id": "wise-vs-revolut-students",
-    "keyword": "Best Free International Student Bank Accounts Wise vs Revolut",
-    "title": "Wise vs Revolut for International Students (2026): Zero-Fee Multi-Currency Review",
-    "slug": "wise-vs-revolut-international-students-review",
-    "category": "Student Perks",
-    "tags": [
-      "Banking",
-      "Wise",
-      "Revolut",
-      "Study Abroad",
-      "Money"
-    ],
-    "target_affiliate": "wise",
-    "status": "published",
-    "published_date": "2026-10-09T12:37:52.759859+00:00"
-  },
-  {
-    "id": "fulbright-foreign-student-program",
-    "keyword": "Fulbright Scholarship USA 2026 Application Timeline & Benefits",
-    "title": "Fulbright Foreign Student Program 2026: Complete Application Timeline & Stipend",
-    "slug": "fulbright-scholarship-usa-2026-guide",
-    "category": "Scholarships",
-    "tags": [
-      "Fulbright",
-      "USA",
-      "Fully Funded",
-      "Graduate"
-    ],
-    "target_affiliate": "grammarly",
-    "status": "published",
-    "published_date": "2026-10-09T13:15:27.883251+00:00"
-  },
-  {
-    "id": "free-ai-coding-tools-students",
-    "keyword": "Best Free Alternatives to Paid AI Coding Assistants 2026",
-    "title": "Top Free Alternatives to Paid AI Coding Tools in 2026 (Zero Subscription Cost)",
-    "slug": "best-free-ai-coding-tools-2026",
+    "id": "cursor-vs-windsurf-vs-copilot",
+    "keyword": "Cursor vs Windsurf vs GitHub Copilot 2026 AI IDE Comparison",
+    "title": "Cursor vs Windsurf vs GitHub Copilot (2026): In-Depth Benchmark & Free Alternatives",
+    "slug": "cursor-vs-windsurf-vs-copilot-comparison",
     "category": "Developer Tools",
+    "image_category": "coding",
     "tags": [
-      "AI Tools",
-      "Coding",
-      "Free Software",
-      "Productivity"
+      "Cursor",
+      "Windsurf",
+      "Copilot",
+      "IDEs",
+      "AI Coding"
     ],
     "target_affiliate": "dev_tools",
     "status": "published",
-    "published_date": "2026-10-09T13:25:24.598830+00:00"
+    "published_date": "2026-10-09T13:51:40.847617+00:00"
   },
   {
-    "id": "gates-cambridge-scholarship",
-    "keyword": "Gates Cambridge Scholarship 2026 Full Funding Criteria",
-    "title": "Gates Cambridge Scholarship 2026: Eligibility Criteria, Interview & Full Funding",
-    "slug": "gates-cambridge-scholarship-2026-guide",
-    "category": "Scholarships",
+    "id": "build-autonomous-ai-agents-gemini-sdk",
+    "keyword": "Build Autonomous AI Agents with Google Gemini 3.8 SDK",
+    "title": "Building Autonomous Multi-Agent Systems with Google Gemini SDK & LangGraph",
+    "slug": "build-autonomous-ai-agents-gemini-sdk",
+    "category": "Autonomous Agents",
+    "image_category": "autonomous_agents",
     "tags": [
-      "Cambridge",
-      "UK",
-      "Gates",
-      "PhD",
-      "Masters"
+      "Gemini",
+      "Agents",
+      "LangGraph",
+      "Python",
+      "Automation"
     ],
-    "target_affiliate": "wise",
-    "status": "pending"
+    "target_affiliate": "cloud_credits",
+    "status": "published",
+    "published_date": "2026-10-09T13:52:27.984475+00:00"
   },
   {
-    "id": "free-cloud-credits-students",
-    "keyword": "How to Get Free AWS Azure Google Cloud Credits for Students",
-    "title": "How to Get $1,000+ in Free AWS, Azure & Google Cloud Credits (Student & Dev Guide)",
+    "id": "free-cloud-credits-aws-azure-gcp-guide",
+    "keyword": "How to Get Free AWS Azure Google Cloud Credits for Developers",
+    "title": "How to Unlock $1,000+ in Free AWS, Azure & Google Cloud Credits (Developer & AI Guide)",
     "slug": "free-cloud-credits-aws-azure-gcp-guide",
-    "category": "Developer Tools",
+    "category": "Cloud Perks",
+    "image_category": "cloud_infra",
     "tags": [
       "Cloud",
       "AWS",
@@ -142,173 +85,175 @@
       "GCP",
       "Free Credits"
     ],
-    "target_affiliate": "dev_tools",
-    "status": "pending"
+    "target_affiliate": "cloud_credits",
+    "status": "published",
+    "published_date": "2026-10-09T13:53:44.709253+00:00"
   },
   {
-    "id": "mext-japan-scholarship",
-    "keyword": "MEXT Japanese Government Scholarship Embassy Recommendation 2026",
-    "title": "MEXT Japan Scholarship 2026: Embassy Recommendation Process & Japanese Allowance",
-    "slug": "mext-japan-government-scholarship-2026",
-    "category": "Scholarships",
-    "tags": [
-      "MEXT",
-      "Japan",
-      "Asia",
-      "Fully Funded"
-    ],
-    "target_affiliate": "wise",
-    "status": "pending"
-  },
-  {
-    "id": "turkiye-burslari-scholarship",
-    "keyword": "Turkiye Burslari Scholarship 2026 Application Steps & Accommodation",
-    "title": "Turkiye Burslari Scholarship 2026: Free Accommodation, Health Insurance & Stipend",
-    "slug": "turkiye-burslari-scholarship-2026-guide",
-    "category": "Scholarships",
-    "tags": [
-      "Turkey",
-      "Turkiye Burslari",
-      "Undergraduate",
-      "Postgraduate"
-    ],
-    "target_affiliate": "wise",
-    "status": "pending"
-  },
-  {
-    "id": "eiffel-excellence-scholarship-france",
-    "keyword": "Eiffel Excellence Scholarship France Campus France 2026",
-    "title": "Eiffel Excellence Scholarship France 2026: Monthly Allowance & Campus France Guide",
-    "slug": "eiffel-excellence-scholarship-france-2026",
-    "category": "Scholarships",
-    "tags": [
-      "France",
-      "Eiffel",
-      "Europe",
-      "Masters"
-    ],
-    "target_affiliate": "wise",
-    "status": "pending"
-  },
-  {
-    "id": "free-jetbrains-student-license",
-    "keyword": "How to Get JetBrains All Products Pack Free for Students 2026",
-    "title": "How to Get JetBrains All Products Pack 100% Free as a Student (IntelliJ, PyCharm, WebStorm)",
-    "slug": "jetbrains-free-student-license-guide",
+    "id": "best-free-ai-coding-tools-2026",
+    "keyword": "Best Free Alternatives to Paid AI Coding Assistants 2026",
+    "title": "Top Free Alternatives to Paid AI Coding Tools in 2026 (Zero Subscription Cost)",
+    "slug": "best-free-ai-coding-tools-2026",
     "category": "Developer Tools",
+    "image_category": "coding",
     "tags": [
-      "JetBrains",
-      "IDEs",
-      "Student Discount",
-      "Free Tools"
+      "AI Tools",
+      "Coding",
+      "Free Software",
+      "Productivity"
     ],
     "target_affiliate": "dev_tools",
     "status": "pending"
   },
   {
-    "id": "swedish-institute-scholarships",
-    "keyword": "Swedish Institute Scholarships for Global Professionals 2026",
-    "title": "Swedish Institute (SI) Scholarship 2026: Full Tuition, Living Expenses & Travel Grant",
-    "slug": "swedish-institute-scholarship-2026-guide",
-    "category": "Scholarships",
+    "id": "github-student-developer-pack-guide",
+    "keyword": "GitHub Student Developer Pack Setup Guide Free $200k Tools",
+    "title": "GitHub Student Developer Pack 2026: How to Unlock $200k in Free Dev Tools & Cloud Credits",
+    "slug": "github-student-developer-pack-guide",
+    "category": "Cloud Perks",
+    "image_category": "developer_tools",
     "tags": [
-      "Sweden",
-      "SI",
-      "Nordic",
-      "Masters"
+      "GitHub",
+      "Student Pack",
+      "Free Credits",
+      "Developer"
     ],
-    "target_affiliate": "wise",
+    "target_affiliate": "dev_tools",
     "status": "pending"
   },
   {
-    "id": "australia-awards-scholarship",
-    "keyword": "Australia Awards Scholarship 2026 Fully Funded DFAT",
-    "title": "Australia Awards Scholarship 2026: DFAT Full Funding, Return Airfare & Living Allowance",
-    "slug": "australia-awards-scholarship-2026-guide",
-    "category": "Scholarships",
+    "id": "best-free-open-source-llms-2026",
+    "keyword": "Best Open Source LLMs for Coding and Reasoning 2026",
+    "title": "Top 7 Free Open-Source LLMs for Coding & Reasoning (Benchmark Scores & Weights)",
+    "slug": "best-free-open-source-llms-2026",
+    "category": "AI Tools",
+    "image_category": "ai_models",
     "tags": [
-      "Australia",
-      "DFAT",
-      "Pacific",
-      "Postgraduate"
+      "Open Source",
+      "LLM",
+      "DeepSeek",
+      "Llama",
+      "Mistral"
     ],
-    "target_affiliate": "wise",
+    "target_affiliate": "cloud_gpu",
     "status": "pending"
   },
   {
-    "id": "swiss-government-excellence-scholarships",
-    "keyword": "Swiss Government Excellence Scholarships 2026/2027 Research Fellowships",
-    "title": "Swiss Government Excellence Scholarships 2026/2027: Research Fellowships & PhD Funding",
-    "slug": "swiss-government-excellence-scholarships-2026",
-    "category": "Scholarships",
-    "tags": [
-      "Switzerland",
-      "Research",
-      "PhD",
-      "Postdoc"
-    ],
-    "target_affiliate": "wise",
-    "status": "pending"
-  },
-  {
-    "id": "singa-singapore-phd-scholarship",
-    "keyword": "Singapore International Graduate Award SINGA 2026 PhD Full Funding",
-    "title": "SINGA Singapore PhD Award 2026: Full Tuition, S$2,700 Monthly Stipend & Airfare",
-    "slug": "singa-singapore-phd-scholarship-2026",
-    "category": "Scholarships",
-    "tags": [
-      "Singapore",
-      "SINGA",
-      "A*STAR",
-      "PhD"
-    ],
-    "target_affiliate": "wise",
-    "status": "pending"
-  },
-  {
-    "id": "best-free-resume-builders-scholarships",
-    "keyword": "Best Free Resume Builders for Scholarship Applications and SOPs",
-    "title": "5 Best Free Resume and CV Builders Tailored for Global Scholarship Applications",
-    "slug": "best-free-resume-builders-for-scholarships",
-    "category": "Student Perks",
-    "tags": [
-      "CV",
-      "Resume",
-      "SOP",
-      "Free Tools",
-      "Grammarly"
-    ],
-    "target_affiliate": "grammarly",
-    "status": "pending"
-  },
-  {
-    "id": "free-domains-ssl-students",
-    "keyword": "How to Get Free Custom Domain and SSL Certificate as a Student",
-    "title": "How to Claim Free Custom Domains (.me, .tech) and SSL Certificates for Students",
-    "slug": "free-custom-domains-and-ssl-guide-students",
+    "id": "free-api-keys-tier-limits-cheatsheet",
+    "keyword": "Free AI API Keys Rate Limits Context Window Cheatsheet",
+    "title": "Free AI API Keys Cheatsheet (2026): Rate Limits, Context Windows & Free Tiers Compared",
+    "slug": "free-ai-api-keys-rate-limits-cheatsheet",
     "category": "Developer Tools",
+    "image_category": "developer_tools",
     "tags": [
-      "Domains",
-      "Namecheap",
-      "SSL",
-      "Student Discount"
+      "API Keys",
+      "Gemini",
+      "Groq",
+      "OpenRouter",
+      "Free Tier"
     ],
     "target_affiliate": "dev_tools",
     "status": "pending"
   },
   {
-    "id": "schwarzman-scholars-china",
-    "keyword": "Schwarzman Scholars Tsinghua University China 2026 Full Funding",
-    "title": "Schwarzman Scholars 2026: Tsinghua University Master's in Global Affairs & Full Scholarship",
-    "slug": "schwarzman-scholars-tsinghua-2026-guide",
-    "category": "Scholarships",
+    "id": "run-local-llms-rtx-mac-m-series",
+    "keyword": "Run 70B LLMs Locally on Mac M-Series and RTX GPUs",
+    "title": "How to Run Large LLMs Locally: Memory Optimization on Apple Silicon and RTX GPUs",
+    "slug": "run-local-llms-apple-silicon-rtx-guide",
+    "category": "AI Tools",
+    "image_category": "ai_models",
     "tags": [
-      "China",
-      "Schwarzman",
-      "Leadership",
-      "Masters"
+      "Hardware",
+      "Apple Silicon",
+      "RTX",
+      "VRAM",
+      "Quantization"
     ],
-    "target_affiliate": "wise",
+    "target_affiliate": "cloud_gpu",
+    "status": "pending"
+  },
+  {
+    "id": "best-free-headless-cms-databases",
+    "keyword": "Best Free Cloud Databases and Headless Backends 2026",
+    "title": "Best Free Cloud Databases & Serverless Backends in 2026: Supabase, Neon & Cloudflare D1",
+    "slug": "best-free-cloud-databases-backends-2026",
+    "category": "Cloud Perks",
+    "image_category": "cloud_infra",
+    "tags": [
+      "Supabase",
+      "Neon",
+      "PostgreSQL",
+      "Cloudflare",
+      "Serverless"
+    ],
+    "target_affiliate": "cloud_credits",
+    "status": "pending"
+  },
+  {
+    "id": "cloudflare-workers-ai-free-tier",
+    "keyword": "Cloudflare Workers AI Free Tier Inference Tutorial",
+    "title": "Serverless AI at the Edge: How to Run Free Models on Cloudflare Workers AI",
+    "slug": "cloudflare-workers-ai-free-inference-guide",
+    "category": "Cloud Perks",
+    "image_category": "cloud_infra",
+    "tags": [
+      "Cloudflare",
+      "Workers AI",
+      "Edge Computing",
+      "Serverless"
+    ],
+    "target_affiliate": "cloud_credits",
+    "status": "pending"
+  },
+  {
+    "id": "free-vector-databases-rag-systems",
+    "keyword": "Best Free Vector Databases for RAG Applications",
+    "title": "Top Free Vector Databases for Production RAG in 2026: Qdrant, Chroma & Pgvector",
+    "slug": "best-free-vector-databases-for-rag",
+    "category": "AI Tools",
+    "image_category": "ai_models",
+    "tags": [
+      "RAG",
+      "Vector Database",
+      "Qdrant",
+      "Chroma",
+      "Embeddings"
+    ],
+    "target_affiliate": "dev_tools",
+    "status": "pending"
+  },
+  {
+    "id": "prompt-engineering-advanced-frameworks",
+    "keyword": "Advanced Prompt Engineering Frameworks for LLMs 2026",
+    "title": "Advanced Prompt Engineering Frameworks: System Prompts, Few-Shot & Chain-of-Thought",
+    "slug": "advanced-prompt-engineering-frameworks-guide",
+    "category": "Autonomous Agents",
+    "image_category": "autonomous_agents",
+    "tags": [
+      "Prompt Engineering",
+      "CoT",
+      "Reasoning",
+      "LLM",
+      "Tutorial"
+    ],
+    "target_affiliate": "dev_tools",
+    "status": "pending"
+  },
+  {
+    "id": "top-ai-code-review-security-tools",
+    "keyword": "Top AI Code Reviewers and Security Scanners for GitHub Actions",
+    "title": "Top AI Code Review & Security Scanners for CI/CD: Catching Vulnerabilities Before Merge",
+    "slug": "top-ai-code-review-security-tools-cicd",
+    "category": "Developer Tools",
+    "image_category": "developer_tools",
+    "tags": [
+      "Security",
+      "CI/CD",
+      "Code Review",
+      "DevSecOps",
+      "GitHub Actions"
+    ],
+    "target_affiliate": "dev_tools",
     "status": "pending"
   }
 ]

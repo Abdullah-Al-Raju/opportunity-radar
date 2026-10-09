@@ -31,12 +31,13 @@ jobs:
       - name: Install Python Dependencies
         run: |
           pip install --upgrade pip
-          pip install requests google-genai
+          pip install requests
 
       - name: Generate and Index New Content
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SITE_URL: ${{ vars.SITE_URL || 'https://opportunityradar.pages.dev' }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://opportunity-radar-c60.pages.dev' }}
           INDEXNOW_KEY: ${{ vars.INDEXNOW_KEY || 'opportunityradarindexnowkey' }}
         run: |
           COUNT="${{ github.event.inputs.count || '1' }}"
@@ -44,12 +45,12 @@ jobs:
 
       - name: Commit and Push to Main
         run: |
-          git config --global user.name "OpportunityRadar Bot"
-          git config --global user.email "bot@opportunityradar.pages.dev"
-          git add src/content/posts/ data/topics.json
+          git config --global user.name "TechRadar Bot"
+          git config --global user.email "bot@opportunity-radar-c60.pages.dev"
+          git add src/content/posts/ data/topics.json public/img/posts/
           if git diff --staged --quiet; then
             echo "No new articles to commit."
           else
-            git commit -m "Auto-published new opportunity guides & pinged IndexNow [skip ci]"
+            git commit -m "Auto-published AI & Tech radar articles with cover images [skip ci]"
             git push origin HEAD:${{ github.ref_name }}
           fi

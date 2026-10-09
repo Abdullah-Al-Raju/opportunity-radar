@@ -2,30 +2,40 @@ import { defineSolitudeConfig } from './lib/config';
 
 export default defineSolitudeConfig({
   site: 'https://opportunity-radar-c60.pages.dev',
-  title: 'Opportunity Radar',
+  title: 'Tech & AI Radar',
   description:
-    'Real-time radar for fully funded international scholarships, global fellowships, grants, and high-value developer tools.',
+    'Autonomous radar tracking breakthrough AI models, open-source LLMs, developer tools, free cloud credits, and agentic workflows.',
   locale: 'en',
   timeZone: 'UTC',
-  author: { name: 'Opportunity Radar Editorial Team' },
+  author: { name: 'Tech & AI Radar Editorial Team' },
   menus: [
     {
-      name: 'Opportunities',
+      name: 'Explore Tech',
       children: [
-        { name: 'All Guides', url: '/archives/', icon: 'fas fa-graduation-cap' },
+        { name: 'All Guides', url: '/archives/', icon: 'fas fa-layer-group' },
         { name: 'Categories', url: '/categories/', icon: 'fas fa-clone' },
         { name: 'Tags', url: '/tags/', icon: 'fas fa-tags' },
       ],
     },
     {
-      name: 'Scholarships',
-      url: '/categories/scholarships/',
-      icon: 'fas fa-award',
+      name: 'AI Tools & LLMs',
+      url: '/categories/ai-tools/',
+      icon: 'fas fa-brain',
     },
     {
-      name: 'Dev & AI Tools',
+      name: 'Developer Tools',
       url: '/categories/developer-tools/',
       icon: 'fas fa-code',
+    },
+    {
+      name: 'Autonomous Agents',
+      url: '/categories/autonomous-agents/',
+      icon: 'fas fa-robot',
+    },
+    {
+      name: 'Cloud & Free Perks',
+      url: '/categories/cloud-perks/',
+      icon: 'fas fa-cloud',
     },
     {
       name: 'Trust & Legal',
@@ -42,9 +52,9 @@ export default defineSolitudeConfig({
     lightbox: 'fancybox',
     nav: {
       group: {
-        'Opportunity Radar': [
+        'Tech & AI Radar': [
           {
-            name: 'Opportunity Radar',
+            name: 'Tech & AI Radar',
             url: 'https://opportunity-radar-c60.pages.dev',
             icon: '/img/logo.png',
           },
@@ -53,8 +63,8 @@ export default defineSolitudeConfig({
     },
     hometop: {
       banner: {
-        title: 'Global Opportunity & Tech Radar',
-        desc: 'Fully funded scholarships, international fellowships, and premium developer tools for free.',
+        title: 'Autonomous AI & Developer Tech Radar',
+        desc: 'Curated intelligence for breakthrough AI models, open-source LLMs, developer tools, and free cloud credits.',
       },
     },
     aside: {
@@ -62,9 +72,9 @@ export default defineSolitudeConfig({
       post: { noSticky: 'about', Sticky: 'newestPost,allInfo' },
       page: { noSticky: 'about', Sticky: 'newestPost,allInfo' },
       my_card: {
-        description: 'Autonomous research radar tracking global education & tech grants.',
-        content: 'Funding your future with zero student debt.',
-        witty_words: ['Fully Funded 2026/2027', 'Global Fellowships', 'Free Developer Tools'],
+        description: 'Autonomous intelligence engine tracking next-generation AI and developer technology.',
+        content: 'Supercharge your engineering workflow with free AI tools.',
+        witty_words: ['Breakthrough AI', 'Autonomous Agents', 'Free Cloud Credits', 'Developer Tools'],
         information: [
           {
             name: 'RSS Feed',
@@ -72,9 +82,9 @@ export default defineSolitudeConfig({
             icon: 'fas fa-rss',
           },
           {
-            name: 'All Scholarships',
-            url: '/categories/scholarships/',
-            icon: 'fas fa-graduation-cap',
+            name: 'AI Tools',
+            url: '/categories/ai-tools/',
+            icon: 'fas fa-brain',
           },
         ],
       },
@@ -83,9 +93,9 @@ export default defineSolitudeConfig({
       information: {
         left: [
           {
-            name: 'Opportunity Radar',
+            name: 'Tech & AI Radar',
             url: 'https://opportunity-radar-c60.pages.dev',
-            icon: 'fas fa-globe',
+            icon: 'fas fa-microchip',
           },
         ],
         right: [{ name: 'RSS', url: '/index.xml', icon: 'fas fa-rss' }],
@@ -93,8 +103,9 @@ export default defineSolitudeConfig({
       group: {
         Explore: [
           { name: 'All Guides', url: '/archives/' },
-          { name: 'Scholarships', url: '/categories/scholarships/' },
+          { name: 'AI Tools', url: '/categories/ai-tools/' },
           { name: 'Developer Tools', url: '/categories/developer-tools/' },
+          { name: 'Cloud & Perks', url: '/categories/cloud-perks/' },
         ],
         Legal: [
           { name: 'Privacy Policy', url: '/privacy/' },
@@ -118,11 +129,13 @@ export default defineSolitudeConfig({
         { modifier: 'shift', key: 'K', action: 'toggleKeyboard' },
       ],
     },
-    search: { tags: ['Scholarships', 'Grants', 'Developer Tools', 'AI'], local: { preload: true } },
+    search: {
+      tags: ['AI Tools', 'DeepSeek', 'Claude', 'Gemini', 'Ollama', 'Developer Tools', 'Cloud', 'Agents'],
+      local: { preload: true },
+    },
     pwa: { enable: true },
     extends: {
       head: [
-        // Meta tags for SEO and IndexNow verification if needed
         '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />',
       ],
       body: [],

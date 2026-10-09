@@ -1,23 +1,23 @@
 {
-  "title": "About Opportunity Radar",
+  "title": "About Tech & AI Radar",
   "sections": [
     {
       "type": "intro",
-      "greeting": "Welcome to Opportunity Radar",
+      "greeting": "Welcome to Tech & AI Radar",
       "name_prefix": "We are",
-      "name": "Opportunity Radar",
-      "description": "An autonomous publishing engine curating fully funded global scholarships, international fellowships, and developer resources.",
+      "name": "Tech & AI Radar",
+      "description": "An autonomous publishing engine curating breakthrough AI models, open-source LLMs, developer tools, and free cloud credits.",
       "pursuit": {
         "label": "Our Mission",
         "lines": [
-          "Global Education",
-          "Without Debt"
+          "Autonomous Intelligence",
+          "For Developers"
         ],
         "rotating_words": [
-          "Fully Funded",
-          "Verified Deadlines",
-          "Free Dev Tools",
-          "Student Grants"
+          "Open Source AI",
+          "Autonomous Agents",
+          "Free Cloud Credits",
+          "Developer Stacks"
         ]
       }
     },

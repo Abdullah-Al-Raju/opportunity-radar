@@ -1,44 +1,50 @@
 {
   "links": [
     {
-      "class_name": "Official resources",
-      "class_desc": "Documentation, source code, and updates",
+      "class_name": "AI Models & Ecosystem",
+      "class_desc": "Official repositories, weight hubs, and model runtimes",
       "type": "card",
       "link_list": [
         {
-          "name": "Astro Docs",
-          "link": "https://docs.astro.build/",
-          "avatar": "/img/logo.png",
-          "topimg": "/img/demo/cover-getting-started-v2.webp",
-          "descr": "Official Astro documentation",
-          "tag": "Docs"
+          "name": "Hugging Face",
+          "link": "https://huggingface.co",
+          "avatar": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+          "topimg": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&h=300&q=80",
+          "descr": "Open weights hub for DeepSeek, Llama, and Mistral models",
+          "tag": "Models"
         },
         {
-          "name": "Solitude GitHub",
-          "link": "https://github.com/everfu/astro-solitude",
-          "avatar": "/img/logo.png",
-          "topimg": "/img/demo/cover-shortcodes-v2.webp",
-          "descr": "Theme source, changes, and issue tracking",
-          "tag": "Source"
+          "name": "Ollama",
+          "link": "https://ollama.com",
+          "avatar": "https://ollama.com/public/ollama.png",
+          "topimg": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&h=300&q=80",
+          "descr": "Run large language models locally on macOS, Linux, and Windows",
+          "tag": "Runtime"
         }
       ]
     },
     {
-      "class_name": "Built with",
-      "class_desc": "Open tools behind Astro Solitude",
+      "class_name": "Developer Tooling & Cloud Platforms",
+      "class_desc": "High-throughput APIs, edge platforms, and developer IDEs",
       "type": "item",
       "link_list": [
         {
-          "name": "Astro",
-          "link": "https://astro.build/",
-          "avatar": "/img/logo.png",
-          "descr": "A fast, flexible site builder"
+          "name": "Google AI Studio",
+          "link": "https://aistudio.google.com",
+          "avatar": "https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg",
+          "descr": "Developer playground and API access for Google Gemini 3.8 and 2.5 models"
         },
         {
-          "name": "TypeScript",
-          "link": "https://www.typescriptlang.org/",
-          "avatar": "https://www.typescriptlang.org/favicon-32x32.png",
-          "descr": "Typed browser interactions"
+          "name": "Anthropic Claude",
+          "link": "https://claude.ai",
+          "avatar": "https://claude.ai/favicon.ico",
+          "descr": "State-of-the-art coding reasoning and Claude Code CLI agent"
+        },
+        {
+          "name": "Cloudflare Workers AI",
+          "link": "https://ai.cloudflare.com",
+          "avatar": "https://www.cloudflare.com/favicon.ico",
+          "descr": "Serverless AI model inference running globally at the edge"
         }
       ]
     }

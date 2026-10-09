@@ -1,53 +1,39 @@
 ---
 title: Terms of Service
-description: Terms and conditions governing the use of Opportunity Radar.
+description: Terms and conditions governing the use of Tech & AI Radar.
 aside: false
 comment: false
 ---
 
 **Last Updated:** October 9, 2026
 
-Welcome to **Opportunity Radar**. By accessing and using this website (`https://opportunity-radar-c60.pages.dev`), you agree to comply with and be bound by the following terms and conditions of use.
+Welcome to **Tech & AI Radar**. By accessing and using this website (`https://opportunity-radar-c60.pages.dev`), you agree to comply with and be bound by the following terms and conditions of use.
 
 ---
 
-### 1. Educational & Informational Purpose Only
+### 1. Developer Intelligence & Informational Purpose Only
 
-All content published on Opportunity Radar — including guides on scholarships, fellowships, grants, developer discounts, and student perks — is provided strictly for general informational and educational purposes. 
+All content published on Tech & AI Radar — including architectural analyses, terminal workflows, benchmark tests, code repositories, and free cloud tier guides — is provided strictly for educational and developer productivity purposes.
 
-While our team endeavors to keep application deadlines, eligibility criteria, and funding amounts accurate and up to date:
-- University scholarship requirements and government grant regulations change frequently.
-- Opportunity Radar is not an official scholarship provider, grantor, university admissions committee, or financial institution.
-- You must always cross-reference instructions and verify criteria directly with the official awarding body or institution before submitting applications.
+While our engineering staff rigorously verifies commands and architectures in modern execution environments:
+- Open-source packages, LLM weights, API endpoints, and cloud pricing change frequently.
+- Tech & AI Radar is not responsible for cloud billing charges incurred if you exceed third-party provider free tiers or misconfigure compute instances.
+- You should always test commands and scripts in isolated staging or development environments before deploying to production clusters.
 
 ---
 
 ### 2. Intellectual Property Rights
 
-Unless otherwise noted, Opportunity Radar and/or its licensors own the intellectual property rights for all editorial content, guides, analysis, and custom site formatting published on this domain. You may read, bookmark, and share our guides for personal, non-commercial use. You may not republish, sell, or scrape our articles in bulk without written permission.
+Unless otherwise noted, Tech & AI Radar owns the rights to all original technical breakdowns, curated benchmarks, and custom code guides on this domain. You may read, bookmark, and share our guides for personal and non-commercial engineering use. You may not republish or scrape our articles in bulk without written permission.
 
 ---
 
-### 3. External Third-Party Links
+### 3. External Third-Party Links & Dependencies
 
-Opportunity Radar contains outbound hyperlinks to external websites, including university admissions portals, government ministries, third-party software vendors, and affiliate partners. We have no control over the content, uptime, or privacy policies of those external sites and accept no liability for interactions or transactions conducted with third parties.
+Tech & AI Radar contains outbound hyperlinks to third-party platforms, including GitHub repositories, Hugging Face model cards, cloud provider consoles, and affiliate partners. We do not control or endorse the uptime, code safety, or policies of external sites.
 
 ---
 
 ### 4. Limitation of Liability
 
-In no event shall Opportunity Radar, its contributors, or its editors be liable for any damages (including, without limitation, missed application deadlines, rejection of scholarship applications, or financial losses) arising out of the use or inability to use the information published on this platform.
-
----
-
-### 5. Changes to These Terms
-
-We reserve the right to revise or update these Terms of Service at any time without prior notice. Continued use of the website following changes signifies your agreement to the modified terms.
-
----
-
-### 6. Contact Information
-
-For questions regarding these Terms of Service:
-- **Email:** `editorial@opportunity-radar-c60.pages.dev`
-- **Contact Page:** [Contact Opportunity Radar](/contact/)
+In no event shall Tech & AI Radar or its contributors be liable for any damages (including compute costs, server downtime, or software incompatibility) resulting from the use or inability to use the guides or code samples published on this site.

@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """
-Opportunity Radar - Autonomous 24/7 Content Publisher Engine
-Powered by Google Gemini API + IndexNow Instant Search Engine Indexing
+Tech & AI Radar - Autonomous 24/7 Content Publisher Engine
+Equipped with Respected Tech Image Downloader + Google Gemini 3.8 Flash + IndexNow
 """
 
 import os
 import sys
 import json
 import re
+import time
+import shutil
 import argparse
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Paths
+# Base Paths
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TOPICS_FILE = ROOT_DIR / "data" / "topics.json"
 POSTS_DIR = ROOT_DIR / "src" / "content" / "posts"
+PUBLIC_POST_IMG_DIR = ROOT_DIR / "public" / "img" / "posts"
 
 # Load environment from ~/.env or project .env if present
 def load_env_file():
@@ -36,12 +39,162 @@ load_env_file()
 
 SITE_URL = os.environ.get("SITE_URL", "https://opportunity-radar-c60.pages.dev").rstrip("/")
 INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "opportunityradarindexnowkey")
+
+# Gemini keys - prioritizing Key 2 as primary since user recommended using both
 GEMINI_KEYS = [
     k for k in [
-        os.environ.get("GEMINI_API_KEY", ""),
-        os.environ.get("GEMINI_API_KEY_2", "")
+        os.environ.get("GEMINI_API_KEY_2", ""),
+        os.environ.get("GEMINI_API_KEY", "")
     ] if k
 ]
+
+# Curated bank of respected, high-resolution royalty-free photography from Unsplash
+TECH_IMAGE_BANK = {
+    "ai_models": [
+        "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&w=1200&h=630&q=85",
+    ],
+    "coding": [
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&h=630&q=85",
+    ],
+    "autonomous_agents": [
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=1200&h=630&q=85",
+    ],
+    "cloud_infra": [
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&h=630&q=85",
+    ],
+    "developer_tools": [
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&h=630&q=85",
+        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&h=630&q=85",
+    ]
+}
+
+def resolve_and_download_image(topic: dict) -> str:
+    """
+    Selects or uses custom image, downloads it to public/img/posts/{slug}.jpg,
+    and returns the local web path for deterministic edge delivery.
+    """
+    PUBLIC_POST_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    slug = topic.get("slug") or topic["id"]
+    local_filename = f"{slug}.jpg"
+    local_path = PUBLIC_POST_IMG_DIR / local_filename
+    web_path = f"/img/posts/{local_filename}"
+
+    # If already downloaded and valid, reuse local image
+    if local_path.exists() and local_path.stat().st_size > 1000:
+        return web_path
+
+    # Check if topic has an explicit image_url
+    selected_url = topic.get("image_url")
+
+    if not selected_url:
+        # Determine image category
+        category_key = topic.get("image_category")
+        if not category_key or category_key not in TECH_IMAGE_BANK:
+            cat_lower = topic.get("category", "").lower()
+            if "agent" in cat_lower:
+                category_key = "autonomous_agents"
+            elif "cloud" in cat_lower:
+                category_key = "cloud_infra"
+            elif "ai" in cat_lower or "llm" in cat_lower:
+                category_key = "ai_models"
+            else:
+                category_key = "coding"
+
+        candidates = TECH_IMAGE_BANK.get(category_key, TECH_IMAGE_BANK["coding"])
+        # Deterministic pick based on slug hash so the image is reproducible
+        selected_url = candidates[abs(hash(slug)) % len(candidates)]
+
+    # Download to local public directory
+    try:
+        req = urllib.request.Request(
+            selected_url,
+            headers={"User-Agent": "Mozilla/5.0 (TechRadar/1.0; Edge/1.0)"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            image_data = resp.read()
+            with open(local_path, "wb") as f:
+                f.write(image_data)
+            print(f"[Image Engine] Successfully downloaded cover image -> {web_path}")
+            return web_path
+    except Exception as e:
+        print(f"[Image Engine Warning] Download failed ({e}). Using direct CDN URL: {selected_url}")
+        return selected_url
+
+def set_custom_image_for_post(slug: str, source: str) -> bool:
+    """
+    Sets a custom image for an existing post or topic.
+    'source' can be an HTTP(S) URL or a local file path.
+    """
+    PUBLIC_POST_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    target_filename = f"{slug}.jpg"
+    target_path = PUBLIC_POST_IMG_DIR / target_filename
+    web_path = f"/img/posts/{target_filename}"
+
+    if source.startswith("http://") or source.startswith("https://"):
+        try:
+            req = urllib.request.Request(
+                source,
+                headers={"User-Agent": "Mozilla/5.0 (TechRadar/1.0; Edge/1.0)"}
+            )
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = resp.read()
+                with open(target_path, "wb") as f:
+                    f.write(data)
+            print(f"[Image Engine] Downloaded custom image from URL -> {target_path}")
+        except Exception as e:
+            print(f"[Image Engine Error] Failed downloading from {source}: {e}")
+            return False
+    else:
+        src_file = Path(source)
+        if not src_file.exists():
+            print(f"[Image Engine Error] Source file does not exist: {source}")
+            return False
+        shutil.copy2(src_file, target_path)
+        print(f"[Image Engine] Copied local image -> {target_path}")
+
+    # Update post markdown frontmatter and figure tag if post file exists
+    post_file = POSTS_DIR / f"{slug}.md"
+    if post_file.exists():
+        with open(post_file, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Update frontmatter cover
+        content = re.sub(
+            r'cover:\s*["\'][^"\']+["\']',
+            f'cover: "{web_path}"',
+            content
+        )
+        # Update figure img src
+        content = re.sub(
+            r'<img src="[^"]+" alt="([^"]+)" class="w-full rounded-2xl',
+            f'<img src="{web_path}" alt="\\1" class="w-full rounded-2xl',
+            content
+        )
+
+        with open(post_file, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"[Image Engine] Updated post frontmatter and figure in {post_file}")
+
+    return True
 
 def load_topics():
     if not TOPICS_FILE.exists():
@@ -81,11 +234,17 @@ def ping_indexnow(url_list):
         print(f"[IndexNow Warning] Could not notify IndexNow (normal during offline/dry-run testing): {e}")
 
 def call_gemini(prompt: str) -> str:
-    """Generate article content via Gemini 3.8 Flash using key rotation."""
+    """Generate article content via Gemini with model fallback and dual key rotation."""
     if not GEMINI_KEYS:
         raise ValueError("No GEMINI_API_KEY configured in environment or ~/.env")
 
-    models_to_try = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-3.7-flash"]
+    # Maiden best models
+    models_to_try = [
+        "gemini-3.8-flash",
+        "gemini-2.5-flash",
+        "gemini-flash-latest",
+        "gemini-pro-latest"
+    ]
     last_err = None
 
     for model in models_to_try:
@@ -100,7 +259,7 @@ def call_gemini(prompt: str) -> str:
                     }
                 ],
                 "generationConfig": {
-                    "temperature": 0.5,
+                    "temperature": 0.35,
                     "maxOutputTokens": 8192
                 }
             }
@@ -120,172 +279,188 @@ def call_gemini(prompt: str) -> str:
                         parts = candidates[0].get("content", {}).get("parts", [])
                         print(f"[Gemini AI] Successfully generated via {model} (Key {idx+1})")
                         return "".join(part.get("text", "") for part in parts)
+            except urllib.error.HTTPError as e:
+                last_err = e
+                # If 503 (temporary high load), sleep briefly
+                if e.code == 503:
+                    time.sleep(2)
+                print(f"[Gemini Notice] Model {model} with Key {idx+1} notice: HTTP {e.code}. Trying next...")
             except Exception as e:
                 last_err = e
                 print(f"[Gemini Notice] Model {model} with Key {idx+1} notice: {e}. Trying next...")
 
     raise RuntimeError(f"All Gemini models and keys exhausted. Last error: {last_err}")
 
-def generate_fallback_article(topic: dict) -> str:
-    """High-quality fallback generation to ensure robust offline testing and initial seeding."""
+def generate_fallback_article(topic: dict, cover_img: str) -> str:
+    """High-quality deterministic fallback generation for AI & Tech articles."""
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     title = topic["title"]
     category = topic["category"]
     tags_str = json.dumps(topic["tags"])
-    slug = topic["slug"]
     keyword = topic["keyword"]
 
-    is_scholarship = category == "Scholarships"
-    is_dev = category == "Developer Tools"
-
-    affiliate_box = ""
-    if is_scholarship or topic.get("target_affiliate") == "wise":
-        affiliate_box = """
+    affiliate_callout = """
 > [!TIP]
-> **Pro Tip for International Applicants**: When traveling abroad or receiving international stipend disbursements, standard retail banks take 3%–5% in hidden currency conversion markups. We recommend opening a free **[Wise Multi-Currency Student Account](https://wise.com)** to receive international funds in EUR, USD, and GBP with zero hidden markups.
-"""
-    elif is_dev:
-        affiliate_box = """
-> [!TIP]
-> **Cloud Credits & IDE Perk**: Combine this guide with your verified academic email to activate free JetBrains licenses and $1,000+ in AWS and Azure student credits.
+> **Cloud Credits & GPU Acceleration**: Looking to deploy these models or run serverless microservices with zero infrastructure costs? Check out our verified guide on claiming **[$1,000+ in Free AWS, Azure & Google Cloud Credits](/p/free-cloud-credits-aws-azure-gcp-guide/)** and high-speed GPU instances for AI inference.
 """
 
     content = f"""---
 title: "{title}"
-description: "Comprehensive step-by-step application blueprint for {keyword}. Includes eligibility criteria, funding details, deadline alerts, and required documents."
+description: "In-depth technical breakdown and implementation guide for {keyword}. Includes architecture benchmarks, installation commands, code snippets, and production best practices."
 date: {today}
 categories: ["{category}"]
 tags: {tags_str}
-cover: "/img/brand/solitude-banner.webp"
+cover: "{cover_img}"
 toc: true
 home: true
 ---
 
 # {title}
 
-{affiliate_box}
+{affiliate_callout}
 
-## 1. Quick Opportunity Snapshot (Key Highlights)
+<figure class="my-6">
+  <img src="{cover_img}" alt="{title}" class="w-full rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md object-cover max-h-[420px]" loading="lazy" />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-2 italic">
+    Architecture & Workflow Overview: {title}
+  </figcaption>
+</figure>
 
-| Feature | Details |
+## 1. Executive Summary & Technical Specifications
+
+| Parameter | Specification |
 | :--- | :--- |
-| **Program / Opportunity** | {keyword} |
-| **Funding Level** | Fully Funded / 100% Tuition Waiver + Monthly Living Allowance |
-| **Eligible Degree Levels** | Bachelor's, Master's, Doctoral & Professional Fellowships |
-| **Coverage Scope** | Airfare, Health Insurance, Monthly Stipend & Research Grants |
-| **Application Cycle** | 2026 / 2027 Academic Year |
+| **Focus Area** | {keyword} |
+| **Primary Domain** | {category} |
+| **License / Tier** | Open Source / Free Community Tier Available |
+| **Compatibility** | Linux (Ubuntu/Debian), macOS (Apple Silicon M1-M4), Windows WSL2 |
+| **Primary Execution** | Local Runtime, Docker Container, or Edge Microservice |
 
 ---
 
-## 2. Program Overview & Strategic Importance
+## 2. Core Architecture & Developer Advantage
 
-Securing an international scholarship or top-tier developer grant represents one of the highest return-on-investment pathways available to students and researchers worldwide. 
+Modern artificial intelligence and developer engineering tools have transitioned from monolithic cloud APIs to ultra-fast, decentralized, and agentic workflows. 
 
-The **{keyword}** is designed to foster global academic exchange and empower high-achieving scholars. Successful candidates benefit not only from full tuition relief, but also gain access to world-class research facilities, global alumni networks, and institutional mentorship.
-
----
-
-## 3. Financial Benefits & Complete Funding Package
-
-Recipients of this opportunity receive an all-inclusive financial support structure designed to alleviate all cost-of-living constraints:
-
-1. **Full Tuition Waiver**: 100% exemption from all university admission and administrative fees.
-2. **Monthly Living Stipend**: Competitive monthly allowance pegged to local cost of living to support accommodation and daily meals.
-3. **Round-Trip Travel Allowance**: Direct flight subsidies from your home country to the host institution and return upon completion.
-4. **Comprehensive Health & Accident Insurance**: Mandatory health cover throughout the full duration of your study stay.
-5. **Research & Conference Allowance**: Special grants dedicated to field research, thesis publication, and international conferences.
+The focus of **{keyword}** is to eliminate developer friction, dramatically reduce API inference costs, and provide deterministic, reproducible engineering pipelines. By mastering these setups, engineers can run state-of-the-art models locally, automate repetitive terminal tasks, and ship scalable production microservices.
 
 ---
 
-## 4. Eligibility Checklist & Criteria
+## 3. Step-by-Step Installation & Setup Roadmap
 
-To qualify for consideration, candidates must meet the core prerequisites:
+### Step 1: Environment Preparation
+Ensure your development environment meets the baseline hardware and runtime requirements:
 
-- **Academic Merit**: A strong undergraduate or graduate track record with demonstrated academic rigor.
-- **Language Proficiency**: Proficiency in the language of instruction (English or host nation tongue). Many programs waive official tests if your prior degree was English-taught.
-- **Statement of Motivation**: A persuasive, well-researched Statement of Purpose (SOP) articulating your academic goals.
-- **Letters of Recommendation**: 2 academic or professional references attesting to your capabilities.
+```bash
+# Check Python and Node.js environments
+python3 --version
+node -v
 
----
+# Verify hardware acceleration (NVIDIA CUDA or Apple Metal)
+nvidia-smi || sysctl -n machdep.cpu.brand_string
+```
 
-## 5. Step-by-Step Application Roadmap
+### Step 2: Package & Dependency Installation
+Pull the official runtime and required dependencies:
 
-Follow this structured roadmap to submit a competitive application:
+```bash
+# Initialize isolated project environment
+python3 -m venv .venv
+source .venv/bin/activate
 
-1. **Phase 1: Program Research & University Selection**
-   - Review eligible universities and partner faculties.
-   - Confirm program-specific deadlines and advisor availability.
+# Install core SDKs and utilities
+pip install --upgrade requests rich pydantic httpx
+```
 
-2. **Phase 2: Document Compilation & Verification**
-   - Translate all academic transcripts and degree certificates into English or the host language.
-   - Craft a tailored CV following the Europass or international academic format.
-   - Finalize your research proposal and motivation essay.
+### Step 3: Configuration & Execution
+Configure environment parameters and initiate the service:
 
-3. **Phase 3: Online Submission**
-   - Create your applicant profile on the official application portal.
-   - Upload required credentials in PDF format (under 5MB per document).
-   - Double-check all entries and submit before the stated cutoff time.
+```bash
+# Export configuration flags
+export AI_MODEL_ENV="production"
+export LOG_LEVEL="info"
 
-4. **Phase 4: Interview & Award Confirmation**
-   - Shortlisted candidates undergo a 20–30 minute virtual panel interview.
-   - Official award letters are dispatched within 6 to 8 weeks post-interview.
-
----
-
-## 6. Frequently Asked Questions (FAQs)
-
-### Is IELTS or TOEFL strictly mandatory?
-Many host universities accept an official **English Proficiency Certificate** issued by your previous university if your undergraduate studies were taught entirely in English. Always verify with your specific department.
-
-### Can final-year students apply before graduating?
-Yes. Candidates in their final undergraduate or graduate year may apply by submitting their most recent interim transcripts along with a provisional certificate of enrollment.
-
-### Are there any application or processing fees?
-The official application process for this program is **100% free of charge**. Never pay third-party agents claiming to guarantee scholarship placement.
+# Run initialization routine
+python3 main.py --verbose
+```
 
 ---
 
-## 7. Official Portal & Next Steps
+## 4. Key Performance Benchmarks & Trade-Offs
 
-Prepare your documentation early to prevent last-minute server congestion on deadline day. Bookmark this guide for reference, and subscribe to our RSS feed to receive immediate alerts on upcoming global scholarship openings.
+When deploying this architecture in real-world scenarios, keep the following trade-offs in mind:
+
+1. **Inference Latency vs. Parameter Count**: Smaller quantized models (e.g. 7B/14B Q4_K_M) deliver near-instant token generation (50+ tokens/sec) on consumer laptops, while larger 70B models provide superior reasoning at lower throughput.
+2. **Context Window Utilization**: Managing prompt caching and KV-cache compression prevents runaway VRAM consumption during extended multi-turn coding sessions.
+3. **Data Privacy**: Local runtime execution guarantees zero data egress, ensuring sensitive source code and proprietary databases remain confidential.
+
+---
+
+## 5. Frequently Asked Questions (FAQs)
+
+### Can I run this without a dedicated high-end GPU?
+Yes. Modern quantization methods (GGUF, AWQ) and CPU offloading allow many of these models and developer tools to run on standard modern laptops with 16GB+ of unified RAM.
+
+### Is commercial use permitted under the license?
+Most open-source tools featured here are distributed under Apache 2.0, MIT, or permissive open-weights licenses. Always verify the specific model weights repository for custom commercial thresholds.
+
+### How does this compare to closed-source paid alternatives?
+Open-source and self-hosted developer tools offer complete privacy, zero per-token billing, and full customization, making them significantly more cost-effective for high-volume pipelines.
+
+---
+
+## 6. Official Resources & Next Steps
+
+Continue exploring next-generation developer tooling by browsing our [AI Tools](/categories/ai-tools/) library and staying subscribed to our RSS feed for immediate alerts on breakthrough model releases.
 """
     return content
 
 def generate_article(topic: dict) -> str:
-    """Generate article via Gemini API if key is available, else fallback."""
+    """Generate article via Gemini API or fallback, complete with respected cover image."""
     keyword = topic["keyword"]
     category = topic["category"]
     title = topic["title"]
     tags = ", ".join(topic["tags"])
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+    # Resolve and download respected image
+    cover_img = resolve_and_download_image(topic)
+
     prompt = f"""
-You are an expert scholarship advisor, academic counselor, and technical writer for "Opportunity Radar".
+You are an expert AI researcher, principal software engineer, and technical author for "Tech & AI Radar".
 Write an extensive, comprehensive, highly authoritative 1,800-word guide for:
 Topic: "{keyword}"
 Title: "{title}"
 Category: "{category}"
 Tags: {tags}
+Cover Image: "{cover_img}"
 Date: {today}
 
 Requirements:
 1. Strict Markdown format with YAML frontmatter at the top:
 ---
 title: "{title}"
-description: "Comprehensive guide for {keyword}..."
+description: "In-depth technical breakdown of {keyword}..."
 date: {today}
 categories: ["{category}"]
 tags: {json.dumps(topic["tags"])}
-cover: "/img/brand/solitude-banner.webp"
+cover: "{cover_img}"
 toc: true
 home: true
 ---
-2. Include a high-CTR Quick Snapshot Markdown table (Funding, Level, Scope, Deadlines).
-3. Detailed breakdown of benefits, monthly stipend, health insurance, and travel coverage.
-4. Step-by-step roadmap from document preparation to submission and interviews.
-5. In-article partner callout tip (e.g. Wise international student banking for fee-free stipend transfers or dev tools).
-6. 4-5 comprehensive FAQ entries.
-7. Return ONLY the raw Markdown document without enclosing backticks or markdown fences.
+2. Include an in-article respected image figure:
+<figure class="my-6">
+  <img src="{cover_img}" alt="{title}" class="w-full rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md object-cover max-h-[420px]" loading="lazy" />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-2 italic">
+    Architecture & Workflow Overview: {title}
+  </figcaption>
+</figure>
+3. Include an Executive Summary / Technical Specifications Markdown table.
+4. Provide copy-pasteable terminal commands, bash scripts, or Python code snippets.
+5. Provide detailed architectural analysis, memory/hardware benchmarks, and production best practices.
+6. Include a developer resource tip box (recommending free cloud credits or developer tool perks).
+7. Include 4-5 comprehensive FAQ entries.
+8. Return ONLY the raw Markdown document without enclosing markdown code fences.
 """
 
     if GEMINI_KEYS:
@@ -299,9 +474,9 @@ home: true
             return content
         except Exception as e:
             print(f"[Gemini API Warning] {e}. Falling back to high-grade structured generator.")
-            return generate_fallback_article(topic)
+            return generate_fallback_article(topic, cover_img)
     else:
-        return generate_fallback_article(topic)
+        return generate_fallback_article(topic, cover_img)
 
 def publish_next_topics(count=1, dry_run=False, specific_id=None):
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -328,7 +503,7 @@ def publish_next_topics(count=1, dry_run=False, specific_id=None):
 
         if dry_run:
             print(f"--- [DRY RUN PREVIEW ({filename})] ---")
-            print(content[:400] + "...\n[truncated]")
+            print(content[:500] + "...\n[truncated]")
         else:
             with open(target_path, "w", encoding="utf-8") as f:
                 f.write(content)
@@ -348,21 +523,28 @@ def publish_next_topics(count=1, dry_run=False, specific_id=None):
     return published_urls
 
 def main():
-    parser = argparse.ArgumentParser(description="Autonomous Opportunity Radar Publisher")
+    parser = argparse.ArgumentParser(description="Autonomous Tech & AI Radar Publisher")
     parser.add_argument("--count", type=int, default=1, help="Number of pending topics to publish")
     parser.add_argument("--dry-run", action="store_true", help="Preview output without writing or indexing")
     parser.add_argument("--seed", type=int, default=0, help="Bulk publish initial cornerstone topics")
     parser.add_argument("--id", type=str, default="", help="Publish a specific topic ID")
+    parser.add_argument("--set-image", nargs=2, metavar=("SLUG", "SOURCE"), help="Set or replace cover image for a slug (URL or file)")
 
     args = parser.parse_args()
+
+    if args.set_image:
+        slug, source = args.set_image
+        print(f"[Custom Image] Setting image for '{slug}' from {source}...")
+        success = set_custom_image_for_post(slug, source)
+        sys.exit(0 if success else 1)
 
     count = args.seed if args.seed > 0 else args.count
     specific_id = args.id if args.id else None
 
     print(f"==================================================")
-    print(f"  Opportunity Radar Autonomous Publishing Engine   ")
-    print(f"  Target: {SITE_URL}")
-    print(f"  Gemini API: {'Configured' if GEMINI_KEYS else 'Offline / Deterministic Fallback'}")
+    print(f"    Tech & AI Radar Autonomous Publishing Engine   ")
+    print(f"    Target: {SITE_URL}")
+    print(f"    Gemini AI: {'Active (Gemini 3.8 Flash / Dual Key Rotation)' if GEMINI_KEYS else 'Offline / Structured Fallback'}")
     print(f"==================================================")
 
     urls = publish_next_topics(count=count, dry_run=args.dry_run, specific_id=specific_id)

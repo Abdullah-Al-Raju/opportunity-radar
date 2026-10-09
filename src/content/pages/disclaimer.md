@@ -1,45 +1,37 @@
 ---
 title: Affiliate & Editorial Disclaimer
-description: FTC affiliate disclosure and editorial integrity policies of Opportunity Radar.
+description: FTC affiliate disclosure and editorial integrity policies of Tech & AI Radar.
 aside: false
 comment: false
 ---
 
 **Last Updated:** October 9, 2026
 
-In compliance with the Federal Trade Commission (FTC) guidelines and international advertising transparency standards, Opportunity Radar maintains full disclosure regarding advertising, affiliate relationships, and editorial standards.
+In compliance with the Federal Trade Commission (FTC) guidelines and international advertising transparency standards, Tech & AI Radar maintains full disclosure regarding affiliate relationships, advertising networks, and technical editorial standards.
 
 ---
 
 ### 1. Affiliate Disclosure
 
-Opportunity Radar participates in select affiliate marketing programs designed to provide a means for independent educational publishers to earn referral fees. This means that when you click on certain links to third-party services and sign up or make a purchase, we may receive a referral fee or commission.
+Tech & AI Radar participates in select affiliate marketing programs with cloud infrastructure providers, AI API platforms, and developer tooling suites. When you click on certain links to third-party services and activate free tiers, credits, or subscriptions, we may receive a referral fee or commission.
 
 **What This Means For You:**
-- **Zero Extra Cost:** You never pay more by using our affiliate links. In many instances, our partner agreements unlock special discounts, waiver codes, or bonus student credits.
-- **Editorial Independence:** Our recommendations are based solely on practical value to students, researchers, and software engineers. We never recommend a platform or service merely because an affiliate program exists.
+- **Zero Extra Cost:** You never pay more by using our partner links. In fact, our verified referral partnerships frequently unlock bonus cloud credits, extended free trial tiers, or exclusive promo discounts.
+- **Editorial Independence:** Our technical reviews, architecture benchmarks, and installation guides are conducted independently. We never recommend a developer tool, LLM provider, or cloud platform simply because an affiliate program exists.
 
-Common affiliate programs on Opportunity Radar may include:
-- Multi-currency student banking & remittance accounts (e.g., Wise, Revolut).
-- Academic writing, grammar checking, and proofreading tools (e.g., Grammarly).
-- Cloud computing platforms and developer developer suites (e.g., DigitalOcean, GitHub Student Pack partners).
-
----
-
-### 2. Advertising Disclosure (Google AdSense & Display Networks)
-
-Opportunity Radar displays third-party programmatic advertisements served by Google AdSense and authorized ad networks. These advertisements are labeled as "Sponsored", "Ad", or displayed in designated advertising blocks. We do not endorse any product or service promoted within automated ad units.
+Common affiliate partners on Tech & AI Radar include:
+- Cloud infrastructure & GPU instances (e.g., DigitalOcean, Vultr, RunPod, AWS/GCP partner credits).
+- Developer IDEs & AI coding assistants (e.g., Cursor, Windsurf, JetBrains).
+- Domain registrars, hosting, and edge networking platforms.
 
 ---
 
-### 3. Not Legal, Financial, or Admissions Advice
+### 2. Programmatic Advertising (Google AdSense & Display Networks)
 
-The information provided on Opportunity Radar is for informational and educational purposes only and should not be construed as legal advice, financial advice, or an official admissions guarantee. Always consult the official university portal, embassy, or sponsor institution for binding requirements.
+Tech & AI Radar displays third-party programmatic advertisements served by Google AdSense and authorized display networks. These advertisements are clearly labeled as "Sponsored", "Ad", or presented in distinct advertising containers. We do not endorse the specific products promoted within automated third-party ad blocks.
 
 ---
 
-### 4. Questions & Feedback
+### 3. Technical Accuracy & Warranties
 
-If you have questions concerning our affiliate partnerships or editorial review policies:
-- **Email:** `editorial@opportunity-radar-c60.pages.dev`
-- **Contact:** [Contact Page](/contact/)
+The guides, installation scripts, benchmark numbers, and architectural diagrams on Tech & AI Radar are provided for educational and developer productivity purposes. While we rigorously test configurations in real-world Linux, macOS, and container environments, software APIs and model architectures change rapidly. Always verify current pricing, rate limits, and security considerations against official documentation before deploying to production.

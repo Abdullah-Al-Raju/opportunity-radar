@@ -1,21 +1,42 @@
 {
   "groups": [
     {
-      "name": "Creative tools",
-      "description": "Sample equipment to replace with your own everyday tools.",
+      "name": "Engineering & AI Hardware",
+      "description": "Hardware and workstations powering local model inference and high-throughput development.",
       "items": [
         {
-          "name": "Laptop",
-          "specification": "Portable workstation",
-          "description": "Write code, organize photos, and capture ideas.",
-          "image": "/img/demo/cover-getting-started-v2.webp",
-          "link": "https://astro.build/"
+          "name": "MacBook Pro M-Series",
+          "specification": "Apple Silicon Unified Memory",
+          "description": "High-bandwidth unified memory architecture optimized for local GGUF/MLX LLM execution.",
+          "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&h=400&q=80",
+          "link": "https://www.apple.com/macbook-pro/"
         },
         {
-          "name": "E-reader",
-          "specification": "Everyday reading",
-          "description": "Read, reflect, and keep the ideas worth revisiting.",
-          "image": "/img/demo/cover-pagination-v2.webp"
+          "name": "NVIDIA RTX Dedicated GPUs",
+          "specification": "24GB GDDR6X VRAM & Tensor Cores",
+          "description": "High-speed FP16 and INT4 tensor cores for model quantization, LoRA training, and fast token generation.",
+          "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&h=400&q=80",
+          "link": "https://www.nvidia.com"
+        }
+      ]
+    },
+    {
+      "name": "Autonomous AI & Developer Tooling",
+      "description": "Core software environments and agent frameworks used in production pipelines.",
+      "items": [
+        {
+          "name": "Claude Code CLI",
+          "specification": "Terminal Autonomous Agent",
+          "description": "Agentic terminal loop for refactoring, test execution, and Git automation directly inside POSIX shells.",
+          "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=400&q=80",
+          "link": "https://claude.ai"
+        },
+        {
+          "name": "Ollama Local Runtime",
+          "specification": "Self-Hosted Model Engine",
+          "description": "Lightweight, cross-platform CLI runtime for running DeepSeek, Llama, and Mistral models locally.",
+          "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&h=400&q=80",
+          "link": "https://ollama.com"
         }
       ]
     }
