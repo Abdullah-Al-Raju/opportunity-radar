@@ -1,0 +1,58 @@
+---
+import { monetizationConfig } from '../../monetization.config';
+
+interface Props {
+  position: 'header' | 'inArticle' | 'sidebar' | 'footer';
+  class?: string;
+}
+
+const { position, class: className = '' } = Astro.props;
+const { mode, adsense, instantAds } = monetizationConfig;
+
+const showAdsense = (mode === 'adsense' || mode === 'dual') && adsense.enabled;
+const showInstant = (mode === 'instant' || mode === 'dual') && instantAds.enabled;
+
+const slotId = adsense.slots[
+  position === 'header'
+    ? 'headerBanner'
+    : position === 'inArticle'
+      ? 'inArticle'
+      : position === 'sidebar'
+        ? 'sidebar'
+        : 'footer'
+];
+
+const instantHtml =
+  position === 'header'
+    ? instantAds.headerBannerHtml
+    : position === 'inArticle'
+      ? instantAds.inArticleHtml
+      : position === 'sidebar'
+        ? instantAds.sidebarHtml
+        : instantAds.inArticleHtml;
+---
+
+{mode !== 'off' && (
+  <div class={`ad-container ad-position-${position} ${className} w-full my-4 overflow-hidden`}>
+    {showAdsense && slotId && (
+      <div class="adsense-unit text-center">
+        <!-- Google AdSense Unit -->
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client={adsense.clientId}
+          data-ad-slot={slotId}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+        <script is:inline>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    )}
+
+    {showInstant && !showAdsense && (
+      <div class="instant-ad-unit" set:html={instantHtml} />
+    )}
+  </div>
+)}

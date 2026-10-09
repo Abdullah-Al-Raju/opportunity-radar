@@ -1,0 +1,76 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: Date | string;
+  lastmod?: Date | string;
+  url: string;
+  author?: string;
+  faqs?: FaqItem[];
+}
+
+const {
+  title,
+  description = '',
+  date,
+  lastmod,
+  url,
+  author = 'Opportunity Radar Editorial Team',
+  faqs = [],
+} = Astro.props;
+
+const publishedDateIso = date ? new Date(date).toISOString() : new Date().toISOString();
+const modifiedDateIso = lastmod ? new Date(lastmod).toISOString() : publishedDateIso;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description,
+  datePublished: publishedDateIso,
+  dateModified: modifiedDateIso,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
+  author: {
+    '@type': 'Organization',
+    name: author,
+    url: 'https://opportunityradar.pages.dev/about/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Opportunity Radar',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://opportunityradar.pages.dev/img/logo.png',
+    },
+  },
+};
+
+const faqSchema =
+  faqs && faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer,
+          },
+        })),
+      }
+    : null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+{faqSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}

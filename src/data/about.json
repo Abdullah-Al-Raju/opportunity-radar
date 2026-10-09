@@ -1,23 +1,23 @@
 {
-  "title": "About Solitude",
+  "title": "About Opportunity Radar",
   "sections": [
     {
       "type": "intro",
-      "greeting": "Hello, welcome to Solitude",
-      "name_prefix": "This is",
-      "name": "Solitude",
-      "description": "An Astro theme for stories and ideas.",
+      "greeting": "Welcome to Opportunity Radar",
+      "name_prefix": "We are",
+      "name": "Opportunity Radar",
+      "description": "An autonomous publishing engine curating fully funded global scholarships, international fellowships, and developer resources.",
       "pursuit": {
-        "label": "Our focus",
+        "label": "Our Mission",
         "lines": [
-          "Make room",
-          "for your story"
+          "Global Education",
+          "Without Debt"
         ],
         "rotating_words": [
-          "Fast",
-          "Reliable",
-          "Native",
-          "Extensible"
+          "Fully Funded",
+          "Verified Deadlines",
+          "Free Dev Tools",
+          "Student Grants"
         ]
       }
     },

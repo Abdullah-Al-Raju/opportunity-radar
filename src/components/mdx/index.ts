@@ -40,7 +40,13 @@ import Typeit from './Typeit.astro';
 import Video from './Video.astro';
 import Videos from './Videos.astro';
 import YouTube from './YouTube.astro';
+import AdSlot from '../monetization/AdSlot.astro';
+import AffiliateCallout from '../monetization/AffiliateCallout.astro';
+import QuickSummaryCard from '../monetization/QuickSummaryCard.astro';
 export const components = {
+  AdSlot,
+  AffiliateCallout,
+  QuickSummaryCard,
   SolitudeMath,
   Audio,
   Bubble,
@@ -125,3 +131,4 @@ export { Typeit };
 export { Video };
 export { Videos };
 export { YouTube };
+export { AdSlot, AffiliateCallout, QuickSummaryCard };

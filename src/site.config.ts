@@ -1,29 +1,40 @@
 import { defineSolitudeConfig } from './lib/config';
 
 export default defineSolitudeConfig({
-  site: 'https://example.org',
-  title: 'Solitude',
+  site: 'https://opportunityradar.pages.dev',
+  title: 'Opportunity Radar',
   description:
-    'Write and create with Astro. A thoughtful home for your stories.',
+    'Real-time radar for fully funded international scholarships, global fellowships, grants, and high-value developer tools.',
   locale: 'en',
   timeZone: 'UTC',
-  author: { name: 'Solitude' },
+  author: { name: 'Opportunity Radar Editorial Team' },
   menus: [
     {
-      name: 'Library',
+      name: 'Opportunities',
       children: [
-        { name: 'All posts', url: '/archives/', icon: 'fas fa-folder-closed' },
+        { name: 'All Guides', url: '/archives/', icon: 'fas fa-graduation-cap' },
         { name: 'Categories', url: '/categories/', icon: 'fas fa-clone' },
         { name: 'Tags', url: '/tags/', icon: 'fas fa-tags' },
       ],
     },
-    { name: 'Friends', url: '/links/' },
     {
-      name: 'Explore',
+      name: 'Scholarships',
+      url: '/categories/scholarships/',
+      icon: 'fas fa-award',
+    },
+    {
+      name: 'Dev & AI Tools',
+      url: '/categories/developer-tools/',
+      icon: 'fas fa-code',
+    },
+    {
+      name: 'Trust & Legal',
       children: [
-        { name: 'About the theme', url: '/about/' },
-        { name: 'My equipment', url: '/equipment/' },
-        { name: 'Short updates', url: '/brevity/' },
+        { name: 'About Editorial', url: '/about/', icon: 'fas fa-user-shield' },
+        { name: 'Contact Us', url: '/contact/', icon: 'fas fa-envelope' },
+        { name: 'Privacy Policy', url: '/privacy/', icon: 'fas fa-shield-halved' },
+        { name: 'Terms of Service', url: '/terms/', icon: 'fas fa-file-contract' },
+        { name: 'Affiliate Disclaimer', url: '/disclaimer/', icon: 'fas fa-scale-balanced' },
       ],
     },
   ],
@@ -31,10 +42,10 @@ export default defineSolitudeConfig({
     lightbox: 'fancybox',
     nav: {
       group: {
-        Project: [
+        'Opportunity Radar': [
           {
-            name: 'Astro Solitude',
-            url: 'https://github.com/everfu/astro-solitude',
+            name: 'Opportunity Radar',
+            url: 'https://opportunityradar.pages.dev',
             icon: '/img/logo.png',
           },
         ],
@@ -42,8 +53,8 @@ export default defineSolitudeConfig({
     },
     hometop: {
       banner: {
-        title: 'Write and create with Solitude',
-        desc: 'An Astro theme with guides, examples, and content components.',
+        title: 'Global Opportunity & Tech Radar',
+        desc: 'Fully funded scholarships, international fellowships, and premium developer tools for free.',
       },
     },
     aside: {
@@ -51,14 +62,19 @@ export default defineSolitudeConfig({
       post: { noSticky: 'about', Sticky: 'newestPost,allInfo' },
       page: { noSticky: 'about', Sticky: 'newestPost,allInfo' },
       my_card: {
-        description: 'An expressive Astro theme for your personal blog.',
-        content: 'Let your content take center stage.',
-        witty_words: ['Capture life in words', 'Create something with code'],
+        description: 'Autonomous research radar tracking global education & tech grants.',
+        content: 'Funding your future with zero student debt.',
+        witty_words: ['Fully Funded 2026/2027', 'Global Fellowships', 'Free Developer Tools'],
         information: [
           {
-            name: 'GitHub',
-            url: 'https://github.com/everfu/astro-solitude',
-            icon: 'fab fa-github',
+            name: 'RSS Feed',
+            url: '/index.xml',
+            icon: 'fas fa-rss',
+          },
+          {
+            name: 'All Scholarships',
+            url: '/categories/scholarships/',
+            icon: 'fas fa-graduation-cap',
           },
         ],
       },
@@ -67,31 +83,33 @@ export default defineSolitudeConfig({
       information: {
         left: [
           {
-            name: 'GitHub',
-            url: 'https://github.com/everfu/astro-solitude',
-            icon: 'fab fa-github',
+            name: 'Opportunity Radar',
+            url: 'https://opportunityradar.pages.dev',
+            icon: 'fas fa-globe',
           },
         ],
         right: [{ name: 'RSS', url: '/index.xml', icon: 'fas fa-rss' }],
       },
       group: {
         Explore: [
-          { name: 'Posts', url: '/archives/' },
-          { name: 'Categories', url: '/categories/' },
+          { name: 'All Guides', url: '/archives/' },
+          { name: 'Scholarships', url: '/categories/scholarships/' },
+          { name: 'Developer Tools', url: '/categories/developer-tools/' },
         ],
-        About: [
-          { name: 'Theme', url: '/about/' },
-          { name: 'Friends', url: '/links/' },
+        Legal: [
+          { name: 'Privacy Policy', url: '/privacy/' },
+          { name: 'Terms of Service', url: '/terms/' },
+          { name: 'Affiliate Disclaimer', url: '/disclaimer/' },
+          { name: 'Contact Editorial', url: '/contact/' },
         ],
       },
     },
-    capsule: { enable: true, id: '7298728834454061071', type: 'playlist', server: 'qishui' },
-    // See docs/integrations.md to configure a playlist or enable comments.
+    capsule: { enable: false, id: '', type: 'playlist', server: 'qishui' },
     post: {
       meta: { locate: false },
       covercolor: { enable: true, mode: 'local' },
     },
-    brevity: { enable: true },
+    brevity: { enable: false },
     keyboard: {
       enable: true,
       list: [
@@ -100,7 +118,14 @@ export default defineSolitudeConfig({
         { modifier: 'shift', key: 'K', action: 'toggleKeyboard' },
       ],
     },
-    search: { tags: ['Astro', 'Solitude', 'MDX'], local: { preload: true } },
+    search: { tags: ['Scholarships', 'Grants', 'Developer Tools', 'AI'], local: { preload: true } },
     pwa: { enable: true },
+    extends: {
+      head: [
+        // Meta tags for SEO and IndexNow verification if needed
+        '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />',
+      ],
+      body: [],
+    },
   },
 });

@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  badge?: string;
+  description: string;
+  buttonText: string;
+  link: string;
+  perks?: string[];
+}
+
+const {
+  title,
+  badge = 'Recommended Benefit',
+  description,
+  buttonText,
+  link,
+  perks = [],
+} = Astro.props;
+---
+
+<div class="my-6 p-5 rounded-2xl bg-gradient-to-br from-indigo-50/80 via-white to-blue-50/80 dark:from-slate-900/90 dark:via-slate-800/80 dark:to-slate-900/90 border border-indigo-200/60 dark:border-indigo-500/30 shadow-md">
+  <div class="flex items-center justify-between gap-3 mb-2">
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-indigo-600 text-white shadow-xs">
+      {badge}
+    </span>
+    <span class="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-semibold">
+      Partner Resource
+    </span>
+  </div>
+
+  <h4 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">
+    {title}
+  </h4>
+
+  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+    {description}
+  </p>
+
+  {perks && perks.length > 0 && (
+    <ul class="mb-4 space-y-1 text-xs text-slate-700 dark:text-slate-200">
+      {perks.map((perk) => (
+        <li class="flex items-center gap-2">
+          <i class="fas fa-check-circle text-emerald-500 text-[11px]"></i>
+          <span>{perk}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <div class="pt-2 border-t border-slate-200/60 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-3">
+    <span class="text-[10px] text-slate-400 dark:text-slate-500 italic">
+      Zero extra cost to you &bull; Verified student/dev benefit
+    </span>
+    <a
+      href={link}
+      target="_blank"
+      rel="nofollow noopener sponsored"
+      class="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-xs font-bold rounded-xl transition-all shadow-sm hover:shadow-indigo-500/20"
+    >
+      <span>{buttonText}</span>
+      <i class="fas fa-arrow-right text-[10px]"></i>
+    </a>
+  </div>
+</div>
