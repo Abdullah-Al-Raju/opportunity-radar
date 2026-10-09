@@ -19,9 +19,29 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 TOPICS_FILE = ROOT_DIR / "data" / "topics.json"
 POSTS_DIR = ROOT_DIR / "src" / "content" / "posts"
 
+# Load environment from ~/.env or project .env if present
+def load_env_file():
+    candidates = [ROOT_DIR / ".env", Path.home() / ".env"]
+    for env_path in candidates:
+        if env_path.exists():
+            with open(env_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, v = line.split("=", 1)
+                        if k not in os.environ:
+                            os.environ[k] = v.strip().strip("'\"")
+
+load_env_file()
+
 SITE_URL = os.environ.get("SITE_URL", "https://opportunityradar.pages.dev").rstrip("/")
 INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "opportunityradarindexnowkey")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_KEYS = [
+    k for k in [
+        os.environ.get("GEMINI_API_KEY", ""),
+        os.environ.get("GEMINI_API_KEY_2", "")
+    ] if k
+]
 
 def load_topics():
     if not TOPICS_FILE.exists():
@@ -61,39 +81,50 @@ def ping_indexnow(url_list):
         print(f"[IndexNow Warning] Could not notify IndexNow (normal during offline/dry-run testing): {e}")
 
 def call_gemini(prompt: str) -> str:
-    """Generate article content via Gemini 2.5 Flash / 1.5 Flash using REST API."""
-    if not GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY not configured")
+    """Generate article content via Gemini 3.8 Flash using key rotation."""
+    if not GEMINI_KEYS:
+        raise ValueError("No GEMINI_API_KEY configured in environment or ~/.env")
 
-    endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    {"text": prompt}
-                ]
+    models_to_try = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-3.7-flash"]
+    last_err = None
+
+    for model in models_to_try:
+        for idx, key in enumerate(GEMINI_KEYS):
+            endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+            payload = {
+                "contents": [
+                    {
+                        "parts": [
+                            {"text": prompt}
+                        ]
+                    }
+                ],
+                "generationConfig": {
+                    "temperature": 0.5,
+                    "maxOutputTokens": 8192
+                }
             }
-        ],
-        "generationConfig": {
-            "temperature": 0.4,
-            "maxOutputTokens": 8192
-        }
-    }
-    
-    req = urllib.request.Request(
-        endpoint,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-        method="POST"
-    )
-    
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-        candidates = data.get("candidates", [])
-        if not candidates:
-            raise RuntimeError(f"No response candidates returned: {data}")
-        parts = candidates[0].get("content", {}).get("parts", [])
-        return "".join(part.get("text", "") for part in parts)
+            
+            req = urllib.request.Request(
+                endpoint,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            
+            try:
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    candidates = data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        print(f"[Gemini AI] Successfully generated via {model} (Key {idx+1})")
+                        return "".join(part.get("text", "") for part in parts)
+            except Exception as e:
+                last_err = e
+                print(f"[Gemini Notice] Model {model} with Key {idx+1} notice: {e}. Trying next...")
+
+    raise RuntimeError(f"All Gemini models and keys exhausted. Last error: {last_err}")
 
 def generate_fallback_article(topic: dict) -> str:
     """High-quality fallback generation to ensure robust offline testing and initial seeding."""
@@ -257,7 +288,7 @@ home: true
 7. Return ONLY the raw Markdown document without enclosing backticks or markdown fences.
 """
 
-    if GEMINI_API_KEY:
+    if GEMINI_KEYS:
         try:
             print(f"[Gemini AI] Drafting article for: {title}...")
             content = call_gemini(prompt)
@@ -331,7 +362,7 @@ def main():
     print(f"==================================================")
     print(f"  Opportunity Radar Autonomous Publishing Engine   ")
     print(f"  Target: {SITE_URL}")
-    print(f"  Gemini API: {'Configured' if GEMINI_API_KEY else 'Offline / Deterministic Fallback'}")
+    print(f"  Gemini API: {'Configured' if GEMINI_KEYS else 'Offline / Deterministic Fallback'}")
     print(f"==================================================")
 
     urls = publish_next_topics(count=count, dry_run=args.dry_run, specific_id=specific_id)

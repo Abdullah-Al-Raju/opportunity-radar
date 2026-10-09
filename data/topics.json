@@ -94,7 +94,8 @@
       "Graduate"
     ],
     "target_affiliate": "grammarly",
-    "status": "pending"
+    "status": "published",
+    "published_date": "2026-10-09T13:15:27.883251+00:00"
   },
   {
     "id": "free-ai-coding-tools-students",
