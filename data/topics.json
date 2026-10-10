@@ -138,7 +138,8 @@
       "Mistral"
     ],
     "target_affiliate": "cloud_gpu",
-    "status": "pending"
+    "status": "published",
+    "published_date": "2026-10-10T21:19:01.882782+00:00"
   },
   {
     "id": "free-api-keys-tier-limits-cheatsheet",
